@@ -69,15 +69,11 @@
     "url": "git+https://github.com/DoryHk/filerobot-image-editor-vue3.git"
   },
   "keywords": [
-    "Image editing vue3 component",
-    "Image Editor",
-    "filerobot image editor",
-    "edit image",
-    "modify image",
-    "filter",
-    "watermark",
-    "resize",
-    "annotate"
+    "vue3 image editor",
+    "vue component for image editing",
+    "image cropper Vue",
+    "photo editor Vue",
+    "Filerobot Vue wrapper"
   ],
   "author": "Dory Hokayem",
   "license": "MIT",

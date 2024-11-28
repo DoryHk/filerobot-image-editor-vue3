@@ -33,16 +33,10 @@ export default defineConfig({
   },
   build: {
     lib: {
-      // entry: resolve(__dirname, '/src/components/FilerobotImageEditor.vue'),
-      // name: 'FilerobotImageEditorVue3',
-      // formats: ['es', 'cjs'],
-      // fileName: (format: string) => (format === 'es' ? 'index.js' : 'index.cjs'),
       fileName: (format) => `filerobot-image-editor-vue3.${format}.js`,
       formats: ['es', 'cjs', 'umd'],
-
-      entry: resolve(__dirname, '/src/components/index.ts'),
+      entry: resolve(__dirname, 'src/components/index.ts'),
       name: 'FilerobotImageEditorVue3',
-      // fileName: 'filerobot-image-editor-vue3',
     },
     rollupOptions: {
       external: ['vue'],
