@@ -1,6 +1,5 @@
 # filerobot-image-editor-vue3
-
-`filerobot-image-editor-vue3` is a Vue 3 wrapper component for the Filerobot Image Editor, a powerful and user-friendly image editor library. It provides an easy way to integrate advanced image editing features into your Vue 3 applications, enabling users to edit, crop, resize, annotate, and enhance images directly in the browser.
+This is a Vue 3 wrapper component for the Filerobot Image Editor, a powerful and user-friendly image editor library. It provides an easy way to integrate advanced image editing features into your Vue 3 applications, enabling users to edit, crop, resize, annotate, and enhance images directly in the browser.
 
 ## Recommended IDE Setup
 
