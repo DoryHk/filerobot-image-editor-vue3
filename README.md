@@ -1,6 +1,6 @@
 # filerobot-image-editor-vue3
 
-This template should help get you started developing with Vue 3 in Vite.
+`filerobot-image-editor-vue3` is a Vue 3 wrapper component for the Filerobot Image Editor, a powerful and user-friendly image editor library. It provides an easy way to integrate advanced image editing features into your Vue 3 applications, enabling users to edit, crop, resize, annotate, and enhance images directly in the browser.
 
 ## Recommended IDE Setup
 
@@ -72,8 +72,8 @@ Once installed, you can use the image editor component in your Vue application b
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import ImageEditor from 'vue3-image-editor';
+import { ref } from 'vue'
+import ImageEditor from 'vue3-image-editor'
 
 const editorConfig = ref({
   source: 'image-url-or-element',
@@ -82,8 +82,8 @@ const editorConfig = ref({
   Text: {
     fonts: ['Arial', 'Courier New', { label: 'Custom Font', value: 'custom-font' }],
     onFontChange: (newFont, reRender) => {
-      console.log(`Font changed to: ${newFont}`);
-      reRender();
+      console.log(`Font changed to: ${newFont}`)
+      reRender()
     },
   },
   Crop: {
@@ -95,11 +95,11 @@ const editorConfig = ref({
   Watermark: {
     gallery: [{ url: 'watermark-url', previewUrl: 'preview-url' }],
     onUploadWatermarkImgClick: async (loadAndSetWatermarkImg) => {
-      const img = await fetchWatermarkImage();
-      loadAndSetWatermarkImg(img.url, true);
+      const img = await fetchWatermarkImage()
+      loadAndSetWatermarkImg(img.url, true)
     },
   },
-});
+})
 </script>
 ```
 
@@ -117,10 +117,12 @@ The `config` prop is an object that follows the `IFilerobotImageEditorConfig` in
 ### Tool Configurations
 
 - **Text Annotation (`Text`)**:
+
   - `fonts`: (optional) An array of font options available for text annotations.
   - `onFontChange`: (optional) Callback triggered when the font is changed.
 
 - **Crop Tool (`Crop`)**:
+
   - `minWidth`, `minHeight`: Minimum width and height for the crop tool.
   - `ratio`: Defines the aspect ratio for cropping (`'original'`, `'custom'`, `'ellipse'`, or a numeric value).
   - `presetsItems`: (optional) Predefined crop ratio options (e.g., `'16:9'`).
@@ -144,7 +146,7 @@ const basicConfig = {
   source: 'https://example.com/image.jpg',
   theme: 'light',
   language: 'en',
-};
+}
 ```
 
 ### Example 2: Advanced Configuration with Crop and Watermark
@@ -166,11 +168,11 @@ const advancedConfig = {
   Watermark: {
     gallery: [{ url: 'watermark-url', previewUrl: 'preview-url' }],
     onUploadWatermarkImgClick: async (loadAndSetWatermarkImg) => {
-      const img = await fetchWatermarkImage();
-      loadAndSetWatermarkImg(img.url, true);
+      const img = await fetchWatermarkImage()
+      loadAndSetWatermarkImg(img.url, true)
     },
   },
-};
+}
 ```
 
 ## Conclusion
