@@ -64,43 +64,54 @@ npm run lint
 
 Once installed, you can use the image editor component in your Vue application by passing a `config` object with various configuration options.
 
-### Basic Example
+### Importing the Component
 
-```vue
-<template>
-  <ImageEditor :config="editorConfig" />
-</template>
+```typescript
+<script lang="ts">
+import { FilerobotImageEditorVue3 } from 'filerobot-image-editor-vue3';
+import type { IFilerobotImageEditorConfig, TOOLS, TABS } from 'filerobot-image-editor-vue3';
 
-<script setup>
-import { ref } from 'vue'
-import ImageEditor from 'vue3-image-editor'
+export default {
+  components: {
+    FilerobotImageEditorVue3,
+  },
+  setup() {
+    const editorConfig: IFilerobotImageEditorConfig = {
+      tools: [TOOLS.CROP, TOOLS.RESIZE],
+      tabs: [TABS.ADJUST, TABS.FILTERS],
+      source: 'https://example.com/image.jpg',
+      language: 'en',
+    };
 
-const editorConfig = ref({
-  source: 'image-url-or-element',
-  theme: 'dark',
-  language: 'en',
-  Text: {
-    fonts: ['Arial', 'Courier New', { label: 'Custom Font', value: 'custom-font' }],
-    onFontChange: (newFont, reRender) => {
-      console.log(`Font changed to: ${newFont}`)
-      reRender()
-    },
+    return { editorConfig };
   },
-  Crop: {
-    minWidth: 100,
-    minHeight: 100,
-    ratio: 'original',
-    presetsItems: [{ label: '16:9', value: '16:9' }],
-  },
-  Watermark: {
-    gallery: [{ url: 'watermark-url', previewUrl: 'preview-url' }],
-    onUploadWatermarkImgClick: async (loadAndSetWatermarkImg) => {
-      const img = await fetchWatermarkImage()
-      loadAndSetWatermarkImg(img.url, true)
-    },
-  },
-})
+};
 </script>
+
+<template>
+  <div>
+    <FilerobotImageEditorVue3 :config="editorConfig" />
+  </div>
+</template>
+```
+
+### Props
+
+| Prop     | Type                          | Description                              |
+| -------- | ----------------------------- | ---------------------------------------- |
+| `config` | `IFilerobotImageEditorConfig` | Configuration object for tools and tabs. |
+
+### Types
+
+You can use the exported types for configuration:
+
+```typescript
+import type { IFilerobotImageEditorConfig, TOOLS, TABS } from 'filerobot-image-editor-vue3'
+
+const editorConfig: IFilerobotImageEditorConfig = {
+  tools: [TOOLS.CROP, TOOLS.RESIZE],
+  tabs: [TABS.ADJUST, TABS.FILTERS],
+}
 ```
 
 ## Configuration Options
@@ -111,7 +122,7 @@ The `config` prop is an object that follows the `IFilerobotImageEditorConfig` in
 
 - **`theme`**: (optional) The theme of the editor (`'light'` or `'dark'`).
 - **`source`**: The source of the image to be edited. Can be a URL string or an `HTMLImageElement`.
-- **`language`**: (optional) Language for the editor interface. Supported languages include: `'en'`, `'fr'`, `'de'`, `'it'`, `'pt'`, `'es'`, `'nl'`, `'pl'`, `'ro'`, or a custom language string.
+- **`language`**: (optional) Language for the editor interface. Supported languages include: `'en'`, `'fr'` or a custom language string.
 - **`translations`**: (optional) A custom translation object to localize the editor text.
 
 ### Tool Configurations
@@ -136,44 +147,6 @@ The `config` prop is an object that follows the `IFilerobotImageEditorConfig` in
 - **`onBeforeSave`**: (optional) Callback function to run before saving the image.
 - **`onSave`**: (optional) Callback function to run when saving the image.
 - **`onClose`**: (optional) Callback function when closing the editor, with parameters for the reason and unsaved changes.
-
-## Example Configurations
-
-### Example 1: Basic Configuration
-
-```ts
-const basicConfig = {
-  source: 'https://example.com/image.jpg',
-  theme: 'light',
-  language: 'en',
-}
-```
-
-### Example 2: Advanced Configuration with Crop and Watermark
-
-```ts
-const advancedConfig = {
-  source: 'image-url-or-element',
-  theme: 'dark',
-  language: 'fr',
-  Text: {
-    fonts: ['Arial', 'Courier New'],
-  },
-  Crop: {
-    minWidth: 200,
-    minHeight: 200,
-    ratio: 'original',
-    presetsItems: [{ label: '4:3', value: '4:3' }],
-  },
-  Watermark: {
-    gallery: [{ url: 'watermark-url', previewUrl: 'preview-url' }],
-    onUploadWatermarkImgClick: async (loadAndSetWatermarkImg) => {
-      const img = await fetchWatermarkImage()
-      loadAndSetWatermarkImg(img.url, true)
-    },
-  },
-}
-```
 
 ## Conclusion
 

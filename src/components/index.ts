@@ -1,3 +1,5 @@
-import FilerobotImageEditor from './FilerobotImageEditor.vue'
+import FilerobotImageEditorVue3 from './FilerobotImageEditor.vue'
 
-export { FilerobotImageEditor }
+export { FilerobotImageEditorVue3 }
+
+export type { IFilerobotImageEditorConfig, TOOLS, TABS } from '@/types/config'
