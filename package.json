@@ -1,7 +1,7 @@
 {
   "name": "filerobot-image-editor-vue3",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.4",
   "type": "module",
   "main": "dist/filerobot-image-editor-vue3.umd.js",
   "module": "dist/filerobot-image-editor-vue3.es.js",
