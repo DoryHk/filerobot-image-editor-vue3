@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 // @ts-ignore
 import FilerobotImageEditor from '@/assets/lib/ImageEditor/filerobot-image-editor.min.js'
 import type { IFilerobotImageEditorConfig } from '@/types/config'
@@ -32,15 +32,32 @@ const getTranslations = () => {
 /**
  * Lifecycle: Mounts the editor instance on the container.
  */
-onMounted(() => {
+const filerobotImageEditorInstance = ref(null)
+
+const initializeEditor = () => {
   try {
-    new FilerobotImageEditor(fileRobotImageRef.value, {
+    if (!fileRobotImageRef.value) {
+      throw new Error('fileRobotImageRef is not available')
+    }
+
+    const instance = new FilerobotImageEditor(fileRobotImageRef.value, {
       ...props.config,
       translations: getTranslations(),
-    }).render()
+    })
+
+    filerobotImageEditorInstance.value = instance
+    instance.render()
   } catch (error) {
-    console.error(error)
+    console.error('Failed to initialize FilerobotImageEditor:', error)
   }
+}
+
+onMounted(() => {
+  initializeEditor()
+})
+
+defineExpose({
+  filerobotImageEditorInstance: computed(() => filerobotImageEditorInstance.value),
 })
 </script>
 <style scoped>

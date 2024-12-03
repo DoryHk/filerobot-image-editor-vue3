@@ -76,6 +76,8 @@ export default {
     FilerobotImageEditorVue3,
   },
   setup() {
+    const editorRef = ref(null);
+
     const editorConfig: IFilerobotImageEditorConfig = {
       tools: [TOOLS.CROP, TOOLS.RESIZE],
       tabs: [TABS.ADJUST, TABS.FILTERS],
@@ -83,14 +85,14 @@ export default {
       language: 'en',
     };
 
-    return { editorConfig };
+    return { editorConfig, editorRef };
   },
 };
 </script>
 
 <template>
   <div>
-    <FilerobotImageEditorVue3 :config="editorConfig" />
+    <FilerobotImageEditorVue3 ref="editorRef" :config="editorConfig" />
   </div>
 </template>
 ```
